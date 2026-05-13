@@ -28,9 +28,7 @@
             <a href="iletisim.html">İletişim</a>
         </nav>
         <a href="iletisim.html" class="btn-primary btn-dark">Bize Ulaşın</a>
-        <div class="mobile-menu-icon" onclick="toggleMenu()">
-            <i class="fa-solid fa-bars"></i>
-        </div>
+
     </header>
 
     <main>
@@ -186,10 +184,31 @@
         <i class="fa-brands fa-whatsapp"></i>
     </a>
 
+    <!-- Mobile Bottom Navigation Bar -->
+    <nav class="mobile-bottom-nav">
+        <a href="../index.html" class="bottom-nav-item" id="bnav-home">
+            <i class="fa-solid fa-house"></i>
+            <span>Anasayfa</span>
+        </a>
+        <a href="projelerimiz.html" class="bottom-nav-item" id="bnav-projects">
+            <i class="fa-solid fa-building"></i>
+            <span>Projeler</span>
+        </a>
+        <a href="galeri.html" class="bottom-nav-item active" id="bnav-gallery">
+            <i class="fa-solid fa-images"></i>
+            <span>Galeri</span>
+        </a>
+        <a href="hakkimizda.html" class="bottom-nav-item" id="bnav-about">
+            <i class="fa-solid fa-circle-info"></i>
+            <span>Hakkımızda</span>
+        </a>
+        <a href="iletisim.html" class="bottom-nav-item" id="bnav-contact">
+            <i class="fa-solid fa-phone"></i>
+            <span>İletişim</span>
+        </a>
+    </nav>
+
     <script>
-        function toggleMenu() {
-            document.querySelector('.nav-links').classList.toggle('active');
-        }
         function filterGallery(kategori, btn) {
             document.querySelectorAll('.filter-tab').forEach(t => t.classList.remove('active'));
             btn.classList.add('active');
