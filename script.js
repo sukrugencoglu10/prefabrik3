@@ -278,4 +278,30 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     }
+
+    // Mobile Bottom Nav — active state based on URL
+    const currentPath = window.location.pathname;
+    const navItems = document.querySelectorAll('.bottom-nav-item');
+    navItems.forEach(item => item.classList.remove('active'));
+
+    if (currentPath.includes('projelerimiz')) {
+        document.getElementById('bnav-projects')?.classList.add('active');
+    } else if (currentPath.includes('galeri')) {
+        document.getElementById('bnav-gallery')?.classList.add('active');
+    } else if (currentPath.includes('hakkimizda')) {
+        document.getElementById('bnav-about')?.classList.add('active');
+    } else if (currentPath.includes('iletisim')) {
+        document.getElementById('bnav-contact')?.classList.add('active');
+    } else {
+        document.getElementById('bnav-home')?.classList.add('active');
+    }
+
+    // Tap ripple effect on bottom nav items
+    navItems.forEach(item => {
+        item.addEventListener('click', function() {
+            navItems.forEach(i => i.classList.remove('active'));
+            this.classList.add('active');
+        });
+    });
 });
+

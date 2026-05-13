@@ -40,9 +40,7 @@
             <a href="navbar/iletisim.html">İletişim</a>
         </nav>
         <button class="btn-primary" onclick="triggerEvent('try_now_click')">Hemen İncele</button>
-        <div class="mobile-menu-icon" onclick="toggleMenu()">
-            <i class="fa-solid fa-bars"></i>
-        </div>
+
     </header>
 
     <main>
@@ -327,6 +325,30 @@
     <a href="https://api.whatsapp.com/send?phone=359882244146&text=Merhaba" target="_blank" class="whatsapp-float" onclick="triggerWhatsAppClick()">
         <i class="fa-brands fa-whatsapp"></i>
     </a>
+
+    <!-- Mobile Bottom Navigation Bar -->
+    <nav class="mobile-bottom-nav" id="mobileBottomNav">
+        <a href="#" class="bottom-nav-item active" id="bnav-home">
+            <i class="fa-solid fa-house"></i>
+            <span>Anasayfa</span>
+        </a>
+        <a href="navbar/projelerimiz.html" class="bottom-nav-item" id="bnav-projects">
+            <i class="fa-solid fa-building"></i>
+            <span>Projeler</span>
+        </a>
+        <a href="navbar/galeri.html" class="bottom-nav-item" id="bnav-gallery">
+            <i class="fa-solid fa-images"></i>
+            <span>Galeri</span>
+        </a>
+        <a href="navbar/hakkimizda.html" class="bottom-nav-item" id="bnav-about">
+            <i class="fa-solid fa-circle-info"></i>
+            <span>Hakkımızda</span>
+        </a>
+        <a href="navbar/iletisim.html" class="bottom-nav-item" id="bnav-contact">
+            <i class="fa-solid fa-phone"></i>
+            <span>İletişim</span>
+        </a>
+    </nav>
 
     <script src="script.js"></script>
 </body>
