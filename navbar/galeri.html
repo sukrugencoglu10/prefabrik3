@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Galeri - Sevil Home Prefabrik Evler</title>
+    <meta name="description" content="Sevil Home'un prefabrik ev galeri fotoğraflarını inceleyin. Çelik villa, tiny house ve prefabrik ev modellerimizden fotoğraflar.">
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="navbar.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navbar -->
+    <header class="navbar navbar-solid">
+        <div class="logo">
+            <a href="../index.html">
+                <img src="../image/sevilhome-kucuk-logo_1.webp" alt="Sevil Home Logo">
+            </a>
+        </div>
+        <nav class="nav-links">
+            <a href="../index.html">Anasayfa</a>
+            <a href="projelerimiz.html">Projelerimiz</a>
+            <a href="galeri.html" class="active">Galeri</a>
+            <a href="hakkimizda.html">Hakkımızda</a>
+            <a href="iletisim.html">İletişim</a>
+        </nav>
+        <a href="iletisim.html" class="btn-primary btn-dark">Bize Ulaşın</a>
+        <div class="mobile-menu-icon" onclick="toggleMenu()">
+            <i class="fa-solid fa-bars"></i>
+        </div>
+    </header>
+
+    <main>
+        <!-- Page Hero -->
+        <section class="page-hero">
+            <div class="page-hero-content">
+                <h1>Fotoğraf Galerisi</h1>
+                <p>Tamamlanan projelerimizden seçme fotoğraflar</p>
+            </div>
+        </section>
+
+        <!-- Gallery Section -->
+        <section class="gallery-section">
+            <div class="gallery-container">
+                <!-- Filter -->
+                <div class="filter-tabs">
+                    <button class="filter-tab active" onclick="filterGallery('tumu', this)">Tümü</button>
+                    <button class="filter-tab" onclick="filterGallery('dis-cephe', this)">Dış Cephe</button>
+                    <button class="filter-tab" onclick="filterGallery('ic-mekan', this)">İç Mekan</button>
+                    <button class="filter-tab" onclick="filterGallery('havuz', this)">Havuz</button>
+                </div>
+
+                <!-- Masonry Grid -->
+                <div class="gallery-grid" id="gallery-grid">
+                    <div class="gallery-item" data-kategori="dis-cephe" onclick="openLightbox(this)">
+                        <img src="../assets/card1.png" alt="Çelik Villa Dış Cephe">
+                        <div class="gallery-overlay"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
+                    </div>
+                    <div class="gallery-item" data-kategori="ic-mekan" onclick="openLightbox(this)">
+                        <img src="../assets/card2.png" alt="Prefabrik Ev İç Mekan">
+                        <div class="gallery-overlay"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
+                    </div>
+                    <div class="gallery-item" data-kategori="dis-cephe" onclick="openLightbox(this)">
+                        <img src="../assets/card3.png" alt="Tiny House Dış Görünüm">
+                        <div class="gallery-overlay"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
+                    </div>
+                    <div class="gallery-item gallery-item-wide" data-kategori="dis-cephe" onclick="openLightbox(this)">
+                        <img src="../assets/hero.png" alt="Modern Villa Bahçe">
+                        <div class="gallery-overlay"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
+                    </div>
+                    <div class="gallery-item" data-kategori="havuz" onclick="openLightbox(this)">
+                        <img src="../assets/bottom.png" alt="Havuzlu Villa">
+                        <div class="gallery-overlay"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
+                    </div>
+                    <div class="gallery-item" data-kategori="ic-mekan" onclick="openLightbox(this)">
+                        <img src="../assets/card1.png" alt="Oturma Odası">
+                        <div class="gallery-overlay"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
+                    </div>
+                    <div class="gallery-item" data-kategori="dis-cephe" onclick="openLightbox(this)">
+                        <img src="../assets/card2.png" alt="Çelik Konstrüksiyon Villa">
+                        <div class="gallery-overlay"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
+                    </div>
+                    <div class="gallery-item gallery-item-tall" data-kategori="havuz" onclick="openLightbox(this)">
+                        <img src="../assets/card3.png" alt="Havuz Detay">
+                        <div class="gallery-overlay"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
+                    </div>
+                    <div class="gallery-item" data-kategori="ic-mekan" onclick="openLightbox(this)">
+                        <img src="../assets/hero.png" alt="Mutfak Tasarımı">
+                        <div class="gallery-overlay"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Lightbox -->
+        <div class="lightbox" id="lightbox" onclick="closeLightbox()">
+            <div class="lightbox-content" onclick="event.stopPropagation()">
+                <button class="lightbox-close" onclick="closeLightbox()"><i class="fa-solid fa-xmark"></i></button>
+                <button class="lightbox-prev" onclick="prevImage()"><i class="fa-solid fa-chevron-left"></i></button>
+                <img id="lightbox-img" src="" alt="Galeri Görseli">
+                <button class="lightbox-next" onclick="nextImage()"><i class="fa-solid fa-chevron-right"></i></button>
+            </div>
+        </div>
+
+        <!-- Video Section -->
+        <section class="video-section">
+            <div class="video-section-header">
+                <h2>Videolarımız</h2>
+                <p>Projelerimizden video içerikler</p>
+            </div>
+            <div class="video-grid">
+                <div class="video-card">
+                    <div class="video-thumb">
+                        <img src="../assets/hero.png" alt="Prefabrik Ev Yapım Süreci">
+                        <div class="video-play-btn" onclick="alert('Video yakında eklenecek!')"><i class="fa-solid fa-play"></i></div>
+                    </div>
+                    <h4>Prefabrik Ev Yapım Süreci</h4>
+                </div>
+                <div class="video-card">
+                    <div class="video-thumb">
+                        <img src="../assets/bottom.png" alt="Çelik Villa Tanıtım">
+                        <div class="video-play-btn" onclick="alert('Video yakında eklenecek!')"><i class="fa-solid fa-play"></i></div>
+                    </div>
+                    <h4>Çelik Villa Tanıtım Filmi</h4>
+                </div>
+                <div class="video-card">
+                    <div class="video-thumb">
+                        <img src="../assets/card1.png" alt="Showroom Turu">
+                        <div class="video-play-btn" onclick="alert('Video yakında eklenecek!')"><i class="fa-solid fa-play"></i></div>
+                    </div>
+                    <h4>Bulgaristan Showroom Turu</h4>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-brand">
+                <img src="../image/sevilhome-kucuk-logo_1.webp" alt="Sevil Home Logo" class="footer-logo">
+                <p>Sevil Home EOOD, prefabrik evler ve çelik konstrüksiyon yapılarda güvenilir çözüm ortağınız.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#"><i class="fa-brands fa-linkedin-in"></i></a>
+                    <a href="https://api.whatsapp.com/send?phone=359882244146&text=Merhaba" target="_blank"><i class="fa-brands fa-whatsapp"></i></a>
+                </div>
+            </div>
+            <div class="footer-links">
+                <h3>Hızlı Bağlantılar</h3>
+                <ul>
+                    <li><a href="../index.html">Anasayfa</a></li>
+                    <li><a href="hakkimizda.html">Hakkımızda</a></li>
+                    <li><a href="projelerimiz.html">Projelerimiz</a></li>
+                    <li><a href="galeri.html">Galeri</a></li>
+                    <li><a href="iletisim.html">İletişim</a></li>
+                </ul>
+            </div>
+            <div class="footer-links">
+                <h3>Hizmetlerimiz</h3>
+                <ul>
+                    <li><a href="#">Çelik Villa</a></li>
+                    <li><a href="#">Prefabrik Ev</a></li>
+                    <li><a href="#">Tiny House</a></li>
+                    <li><a href="#">Anahtar Teslim</a></li>
+                    <li><a href="#">Mimari Danışmanlık</a></li>
+                </ul>
+            </div>
+            <div class="footer-contact">
+                <h3>İletişim</h3>
+                <p><i class="fa-solid fa-location-dot"></i> Ul. Ivan Bratanov 20, Popovo, Bulgaria</p>
+                <p><i class="fa-solid fa-phone"></i> <a href="tel:+359882244146" style="color:inherit;">+359 88 224 4146</a></p>
+                <p><i class="fa-solid fa-envelope"></i> <a href="mailto:office@sevilhome.com" style="color:inherit;">office@sevilhome.com</a></p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Sevil Home EOOD. Tüm hakları saklıdır.</p>
+        </div>
+    </footer>
+
+    <a href="https://api.whatsapp.com/send?phone=359882244146&text=Merhaba" target="_blank" class="whatsapp-float">
+        <i class="fa-brands fa-whatsapp"></i>
+    </a>
+
+    <script>
+        function toggleMenu() {
+            document.querySelector('.nav-links').classList.toggle('active');
+        }
+        function filterGallery(kategori, btn) {
+            document.querySelectorAll('.filter-tab').forEach(t => t.classList.remove('active'));
+            btn.classList.add('active');
+            document.querySelectorAll('.gallery-item').forEach(item => {
+                item.style.display = (kategori === 'tumu' || item.dataset.kategori === kategori) ? 'block' : 'none';
+            });
+        }
+        let currentIndex = 0;
+        let images = [];
+        function openLightbox(el) {
+            const allItems = [...document.querySelectorAll('.gallery-item:not([style*="display: none"])')];
+            images = allItems.map(i => ({ src: i.querySelector('img').src, alt: i.querySelector('img').alt }));
+            currentIndex = allItems.indexOf(el);
+            document.getElementById('lightbox-img').src = images[currentIndex].src;
+            document.getElementById('lightbox').style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+        }
+        function closeLightbox() {
+            document.getElementById('lightbox').style.display = 'none';
+            document.body.style.overflow = '';
+        }
+        function prevImage() {
+            currentIndex = (currentIndex - 1 + images.length) % images.length;
+            document.getElementById('lightbox-img').src = images[currentIndex].src;
+        }
+        function nextImage() {
+            currentIndex = (currentIndex + 1) % images.length;
+            document.getElementById('lightbox-img').src = images[currentIndex].src;
+        }
+        document.addEventListener('keydown', e => {
+            if (document.getElementById('lightbox').style.display === 'flex') {
+                if (e.key === 'ArrowLeft') prevImage();
+                if (e.key === 'ArrowRight') nextImage();
+                if (e.key === 'Escape') closeLightbox();
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prefabrik Evim - Hayalinizdeki Evi Basitçe Bulun</title>
+    <meta name="description" content="En iyi çelik konstrüksiyon ve prefabrik ev modellerini inceleyin. Hayalinizdeki modern, doğa ile iç içe prefabrik evi bulun.">
+    <link rel="stylesheet" href="style.css">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- DataLayer -->
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        
+        // Initial page view event
+        dataLayer.push({
+            'event': 'page_view',
+            'page_title': 'Prefabrik Evim - Anasayfa',
+            'page_location': window.location.href
+        });
+    </script>
+</head>
+<body>
+    <!-- Navbar -->
+    <header class="navbar">
+        <div class="logo">
+            <img src="image/sevilhome-kucuk-logo_1.webp" alt="Sevil Home Logo">
+        </div>
+        <nav class="nav-links">
+            <a href="#" class="active">Anasayfa</a>
+            <a href="navbar/projelerimiz.html">Projelerimiz</a>
+            <a href="navbar/galeri.html">Galeri</a>
+            <a href="navbar/hakkimizda.html">Hakkımızda</a>
+            <a href="navbar/iletisim.html">İletişim</a>
+        </nav>
+        <button class="btn-primary" onclick="triggerEvent('try_now_click')">Hemen İncele</button>
+        <div class="mobile-menu-icon" onclick="toggleMenu()">
+            <i class="fa-solid fa-bars"></i>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="hero" id="hero-section">
+            <div class="hero-content">
+                <h1>Yeni Evinizi Bulmak<br>Çok Basit</h1>
+                <p>PrefabrikEvim, ihtiyaçlarınıza uygun mükemmel prefabrik ve çelik evi bulmanız için en doğru adres.</p>
+                <p class="sub-desc">Türkiye ve Avrupa genelinde binlerce ev modeli ile hizmetinizdeyiz.</p>
+                
+                <div class="hero-search">
+                    <input type="text" placeholder="Arama yapın..." id="hero-search-input">
+                    <button class="btn-icon" onclick="triggerSearch('hero')"><i class="fa-solid fa-arrow-right"></i></button>
+                </div>
+            </div>
+            <div class="hero-image-container">
+                <!-- Background is handled via CSS or we can use img -->
+            </div>
+        </section>
+
+        <!-- Floating Search Box -->
+        <div class="floating-search">
+            <div class="search-item custom-dropdown" onclick="toggleDropdown(this, event)">
+                <span class="label">Lokasyon <i class="fa-solid fa-chevron-down"></i></span>
+                <span class="value" id="selected-location">Seçiniz</span>
+                <div class="dropdown-menu">
+                    <div class="dropdown-option" onclick="selectOption(event, 'Tüm Lokasyonlar', 'selected-location')">Tüm Lokasyonlar</div>
+                    <div class="dropdown-option" onclick="selectOption(event, 'İstanbul', 'selected-location')">İstanbul</div>
+                    <div class="dropdown-option" onclick="selectOption(event, 'İzmir', 'selected-location')">İzmir</div>
+                    <div class="dropdown-option" onclick="selectOption(event, 'Ankara', 'selected-location')">Ankara</div>
+                    <div class="dropdown-option" onclick="selectOption(event, 'Antalya', 'selected-location')">Antalya</div>
+                </div>
+            </div>
+            <div class="search-item custom-dropdown" onclick="toggleDropdown(this, event)">
+                <span class="label">Ürün Katalogları <i class="fa-solid fa-chevron-down"></i></span>
+                <span class="value" id="selected-catalog">Seçiniz</span>
+                <div class="dropdown-menu">
+                    <div class="dropdown-option" onclick="selectOption(event, 'Tüm Kataloglar', 'selected-catalog')">Tüm Kataloglar</div>
+                    <div class="dropdown-option" onclick="selectOption(event, 'Çelik Villa Kataloğu', 'selected-catalog')">Çelik Villa Kataloğu</div>
+                    <div class="dropdown-option" onclick="selectOption(event, 'Prefabrik Ev Kataloğu', 'selected-catalog')">Prefabrik Ev Kataloğu</div>
+                    <div class="dropdown-option" onclick="selectOption(event, 'Tiny House Kataloğu', 'selected-catalog')">Tiny House Kataloğu</div>
+                    <div class="dropdown-option" onclick="selectOption(event, 'Konteyner Kataloğu', 'selected-catalog')">Konteyner Kataloğu</div>
+                </div>
+            </div>
+            <div class="search-item custom-dropdown" onclick="toggleDropdown(this, event)">
+                <span class="label">Fiyat <i class="fa-solid fa-chevron-down"></i></span>
+                <span class="value" id="selected-price">Seçiniz</span>
+                <div class="dropdown-menu">
+                    <div class="dropdown-option" onclick="selectOption(event, 'Tüm Fiyatlar', 'selected-price')">Tüm Fiyatlar</div>
+                    <div class="dropdown-option" onclick="selectOption(event, '0-500.000 ₺', 'selected-price')">0 – 500.000 ₺</div>
+                    <div class="dropdown-option" onclick="selectOption(event, '500.000-1.000.000 ₺', 'selected-price')">500.000 – 1.000.000 ₺</div>
+                    <div class="dropdown-option" onclick="selectOption(event, '1.000.000-2.000.000 ₺', 'selected-price')">1.000.000 – 2.000.000 ₺</div>
+                    <div class="dropdown-option" onclick="selectOption(event, '2.000.000+ ₺', 'selected-price')">2.000.000+ ₺</div>
+                </div>
+            </div>
+            <button class="btn-search-large" onclick="runSearch()">
+                <i class="fa-solid fa-magnifying-glass"></i> Ara
+            </button>
+        </div>
+
+        <!-- Search Results Section (hidden by default) -->
+        <section class="search-results" id="search-results" style="display:none;">
+            <div class="search-results-header">
+                <h2>Arama Sonuçları</h2>
+                <span id="results-count" class="results-count"></span>
+                <button class="btn-clear-search" onclick="clearSearch()"><i class="fa-solid fa-xmark"></i> Aramayı Temizle</button>
+            </div>
+            <div class="cards-grid" id="results-grid"></div>
+            <p class="no-results" id="no-results" style="display:none;">Seçtiğiniz kriterlere uygun proje bulunamadı.</p>
+        </section>
+
+        <!-- Most Viewed Section -->
+        <section class="most-viewed">
+            <div class="section-header">
+                <h2>En Çok İncelenenler</h2>
+                <p>Dünya çapında çeşitli doğa evlerini keşfedin. Güvenle rezerve edin ve stressiz bir konaklama için uzman müşteri desteği alın.</p>
+            </div>
+            
+            <div class="cards-grid">
+                <!-- Card 1 -->
+                <div class="card"
+                    data-lokasyon="istanbul"
+                    data-kategori="celik-villa"
+                    data-fiyat="910000"
+                    onclick="triggerItemView('Doğa Esintisi Villa', '910000')">
+                    <div class="card-img">
+                        <img src="assets/card1.png" alt="Ocean Breeze Villa" loading="lazy">
+                    </div>
+                    <div class="card-info">
+                        <div class="card-meta">
+                            <span><i class="fa-solid fa-location-dot"></i> İstanbul, TR</span>
+                            <div class="specs">
+                                <span><i class="fa-solid fa-bed"></i> 4</span>
+                                <span><i class="fa-solid fa-bath"></i> 2</span>
+                            </div>
+                        </div>
+                        <h3>Doğa Esintisi Villa</h3>
+                        <p class="price">₺ 910.000,00</p>
+                    </div>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="card"
+                    data-lokasyon="izmir"
+                    data-kategori="prefabrik-ev"
+                    data-fiyat="750000"
+                    onclick="triggerItemView('Modern Ahşap Ev', '750000')">
+                    <div class="card-img">
+                        <img src="assets/card2.png" alt="Jakson House" loading="lazy">
+                    </div>
+                    <div class="card-info">
+                        <div class="card-meta">
+                            <span><i class="fa-solid fa-location-dot"></i> İzmir, TR</span>
+                            <div class="specs">
+                                <span><i class="fa-solid fa-bed"></i> 3</span>
+                                <span><i class="fa-solid fa-bath"></i> 2</span>
+                            </div>
+                        </div>
+                        <h3>Modern Ahşap Ev</h3>
+                        <p class="price">₺ 750.000,00</p>
+                    </div>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="card"
+                    data-lokasyon="sapanca"
+                    data-kategori="tiny-house"
+                    data-fiyat="540000"
+                    onclick="triggerItemView('Göl Kenarı Kulübe', '540000')">
+                    <div class="card-img">
+                        <img src="assets/card3.png" alt="Lakeside Cottage" loading="lazy">
+                    </div>
+                    <div class="card-info">
+                        <div class="card-meta">
+                            <span><i class="fa-solid fa-location-dot"></i> Sapanca, TR</span>
+                            <div class="specs">
+                                <span><i class="fa-solid fa-bed"></i> 2</span>
+                                <span><i class="fa-solid fa-bath"></i> 1</span>
+                            </div>
+                        </div>
+                        <h3>Göl Kenarı Kulübe</h3>
+                        <p class="price">₺ 540.000,00</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="dots">
+                <span class="dot active"></span>
+                <span class="dot"></span>
+                <span class="dot"></span>
+            </div>
+        </section>
+
+        <!-- Bottom Section -->
+        <section class="easiest-method">
+            <div class="method-image">
+                <img src="assets/bottom.png" alt="Modern Architecture" loading="lazy">
+                <div class="home-icon-overlay">
+                    <i class="fa-solid fa-house"></i>
+                </div>
+            </div>
+            <div class="method-content">
+                <h2>Ev Bulmanın<br>En Kolay Yolu</h2>
+                <p>Mükemmel yaşam alanınızı bulmak için yenilikçi teknolojimiz ve uzman ekibimizle yanınızdayız.</p>
+                <ul class="features">
+                    <li><i class="fa-solid fa-check"></i> Hızlı ve Güvenilir Kurulum</li>
+                    <li><i class="fa-solid fa-check"></i> Çevre Dostu Malzemeler</li>
+                    <li><i class="fa-solid fa-check"></i> Uzun Ömürlü Yapılar</li>
+                </ul>
+                <button class="btn-primary mt-4" onclick="triggerEvent('learn_more_click')">Daha Fazla Bilgi</button>
+            </div>
+        </section>
+
+        <!-- FAQ Section -->
+        <section class="faq-section">
+            <div class="faq-container">
+                <h2 class="faq-title">Sıkça Sorulan Sorular</h2>
+                <div class="faq-list">
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="toggleFaq(this)">
+                            <span>Prefabrik evlerin ömrü ne kadardır?</span>
+                            <i class="fa-solid fa-plus"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Prefabrik evler, kullanılan malzemeye ve bakımına bağlı olarak ortalama 40-50 yıl ve üzeri ömre sahiptir. Çelik konstrüksiyonlu yapılar ise 100 yıla kadar dayanıklılık gösterebilir.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="toggleFaq(this)">
+                            <span>Prefabrik evler depreme dayanıklı mıdır?</span>
+                            <i class="fa-solid fa-plus"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Evet, prefabrik evler esnek yapıları ve çelik konstrüksiyon destekleri sayesinde şiddetli depremlere karşı oldukça dayanıklı ve güvenlidir.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="toggleFaq(this)">
+                            <span>İnşaat ve kurulum süresi ortalama ne kadar sürer?</span>
+                            <i class="fa-solid fa-plus"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Evin büyüklüğüne ve projenin detaylarına göre değişiklik göstermekle birlikte, fabrikasyon üretimi 1-2 hafta, sahada kurulumu ise ortalama 15-30 gün içerisinde tamamlanmaktadır.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="toggleFaq(this)">
+                            <span>Prefabrik evlerde ısı ve ses yalıtımı nasıldır?</span>
+                            <i class="fa-solid fa-plus"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Kullanılan yüksek yoğunluklu izolasyon malzemeleri (taş yünü, EPS vb.) sayesinde geleneksel betonarme binalara göre çok daha yüksek ısı ve ses yalıtımı sağlar.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="toggleFaq(this)">
+                            <span>İmar izni (ruhsat) almak gerekiyor mu?</span>
+                            <i class="fa-solid fa-plus"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Evet, betonarme evlerde olduğu gibi prefabrik evler için de ilgili belediyeden mimari proje onaylatılarak imar izni ve yapı ruhsatı alınması zorunludur.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer Section -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-brand">
+                <img src="image/sevilhome-kucuk-logo_1.webp" alt="Sevil Home Logo" class="footer-logo">
+                <p>PrefabrikEvim ile hayalinizdeki modern, dayanıklı ve çevre dostu yaşam alanına en hızlı şekilde ulaşın.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="#"><i class="fa-brands fa-twitter"></i></a>
+                    <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#"><i class="fa-brands fa-linkedin-in"></i></a>
+                </div>
+            </div>
+            
+            <div class="footer-links">
+                <h3>Hızlı Bağlantılar</h3>
+                <ul>
+                    <li><a href="#">Anasayfa</a></li>
+                    <li><a href="#">Hakkımızda</a></li>
+                    <li><a href="#">Projelerimiz</a></li>
+                    <li><a href="#">Lokasyonlar</a></li>
+                    <li><a href="#">İletişim</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-links">
+                <h3>Hizmetlerimiz</h3>
+                <ul>
+                    <li><a href="#">Çelik Villa</a></li>
+                    <li><a href="#">Prefabrik Ev</a></li>
+                    <li><a href="#">Tiny House</a></li>
+                    <li><a href="#">Anahtar Teslim</a></li>
+                    <li><a href="#">Mimari Danışmanlık</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-contact">
+                <h3>İletişim</h3>
+                <p><i class="fa-solid fa-location-dot"></i> Örnek Mahallesi, Yapı Caddesi No: 123 Kadıköy / İstanbul</p>
+                <p><i class="fa-solid fa-phone"></i> +90 (555) 555 55 55</p>
+                <p><i class="fa-solid fa-envelope"></i> info@prefabrikevim.com.tr</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Prefabrik Evim. Tüm hakları saklıdır. Tasarım & Geliştirme: Sevil Home</p>
+        </div>
+    </footer>
+
+    <!-- WhatsApp Floating Icon -->
+    <a href="https://api.whatsapp.com/send?phone=359882244146&text=Merhaba" target="_blank" class="whatsapp-float" onclick="triggerWhatsAppClick()">
+        <i class="fa-brands fa-whatsapp"></i>
+    </a>
+
+    <script src="script.js"></script>
+</body>
+</html>
