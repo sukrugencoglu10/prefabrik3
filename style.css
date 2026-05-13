@@ -761,7 +761,9 @@ p { color: var(--text-light); }
     .search-item:last-of-type { border-bottom: none; }
 
     .btn-search-large {
-        display: none;
+        width: 100%;
+        justify-content: center;
+        margin-top: 0.5rem;
     }
 
     .easiest-method {
@@ -839,9 +841,7 @@ p { color: var(--text-light); }
     }
 
     .hero-search {
-        margin: 2rem auto 0;
-        width: 100%;
-        max-width: 400px;
+        display: none;
     }
 
     .cards-grid {
